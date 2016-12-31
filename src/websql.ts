@@ -61,7 +61,7 @@ const SQL = function(config: SQLConfig){
       if( lengthKeysRecords > this.fields.split(',').length && lengthKeysRecords < this.fields.split(',').length)
         error('Error:',`La cantidad de valores a ingresar no es la misma que los campos de la tabla.\nCampos: ${this.fields} `)
       else if( !records || lengthKeysRecords <= 0 )
-        error('Error:','Ingrese un objeto con los valores a ingresar ej; {id:1, data1:2}')
+        error('Error:','Ingrese un objeto con las keys correspondientes, ej; {id:1, data1:2}')
       else{
         this.db.transaction( (tx:any) => {
           let values:string = "";
@@ -94,13 +94,13 @@ const SQL = function(config: SQLConfig){
 
         let fn = (cant:number) => {
            this.insert( records[cant], (tx:any, res:any) => {
-            if( cant >= records.length )
-              success(txx, ress);
+            if( cant >= ( records.length-1 ) )
+              success(tx, res);
             else
-              fn( count + 1 );
+              fn( cant + 1 );
 
            },(tx:any, err:any) => {
-             if( count >= records.length ){
+             if( cant >= records.length ){
                errors.push( err );
                error(tx, errors);
              }else{

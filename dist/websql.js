@@ -56,7 +56,7 @@ var SQL = function (config) {
             if (lengthKeysRecords > this.fields.split(',').length && lengthKeysRecords < this.fields.split(',').length)
                 error('Error:', "La cantidad de valores a ingresar no es la misma que los campos de la tabla.\nCampos: " + this.fields + " ");
             else if (!records || lengthKeysRecords <= 0)
-                error('Error:', 'Ingrese un objeto con los valores a ingresar ej; {id:1, data1:2}');
+                error('Error:', 'Ingrese un objeto con las keys correspondientes, ej; {id:1, data1:2}');
             else {
                 this.db.transaction(function (tx) {
                     var values = "";
@@ -79,15 +79,15 @@ var SQL = function (config) {
             if (records.length <= 0)
                 error('Erro', 'Inserte objetos ');
             else {
-                var count_1 = 0, errors_1 = [], ress_1, txx_1;
+                var count = 0, errors_1 = [], ress = void 0, txx = void 0;
                 var fn_1 = function (cant) {
                     _this.insert(records[cant], function (tx, res) {
-                        if (cant >= records.length)
-                            success(txx_1, ress_1);
+                        if (cant >= (records.length - 1))
+                            success(tx, res);
                         else
-                            fn_1(count_1 + 1);
+                            fn_1(cant + 1);
                     }, function (tx, err) {
-                        if (count_1 >= records.length) {
+                        if (cant >= records.length) {
                             errors_1.push(err);
                             error(tx, errors_1);
                         }
@@ -97,7 +97,7 @@ var SQL = function (config) {
                         }
                     });
                 };
-                fn_1(count_1);
+                fn_1(count);
             }
         },
         generateStrings: function (a, value, key) {

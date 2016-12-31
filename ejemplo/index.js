@@ -8,18 +8,19 @@
 
     Table = res;
 
-    res.insert([
+    res.insertValues([
               { id: 1, campo: 'Ejemplo ', date: new Date().getTime() },
               { id: 2, campo: 'Ejemplo ', date: new Date().getTime() },
               { id: 3, campo: 'Ejemplo ', date: new Date().getTime() },
-              { id: 4, campo: 'Ejemplo 2', date: new Date().getTime() },
-              { id: 5, campo: 'Ejemplo 2', date: new Date().getTime() },
-              { id: 6, campo: 'Ejemplo 2', date: new Date().getTime() },
-              { id: 7, campo: 'Ejemplo 3', date: new Date().getTime() },
-              { id: 8, campo: 'Ejemplo 3', date: new Date().getTime() },
-              { id: 9, campo: 'Ejemplo 3', date: new Date().getTime() }
               ]);
-    
+
+    res.insert({ id: 4, campo: 'Ejemplo 2', date: new Date().getTime() });
+    res.insert({ id: 5, campo: 'Ejemplo 2', date: new Date().getTime() });
+    res.insert({ id: 6, campo: 'Ejemplo 2', date: new Date().getTime() });
+    res.insert({ id: 7, campo: 'Ejemplo 3', date: new Date().getTime() });
+    res.insert({ id: 8, campo: 'Ejemplo 3', date: new Date().getTime() });
+    res.insert({ id: 9, campo: 'Ejemplo 3', date: new Date().getTime() });
+
     // Actualiza la fila con id 9
     res.update({ id: 9 }, { campo: 'Ejemplo 4', date: new Date().getTime() });
     // Obtiene 3 valores
