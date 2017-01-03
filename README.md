@@ -1,6 +1,15 @@
 # WebSQL Query
 
-## Ejemplo
+Es un pequeño script que permite manejar WebSQL estilo un ORM
+
+## Contenido
+
+En la carpeta <code>js</code> se encuentra el archivo para formato JavaScript.
+
+En la carpeta <code>ts</code> se encuentra el archivo para TypeScript.
+
+
+## Ejemplo e uso
 
 ```
 
@@ -83,4 +92,3 @@
 ## TODO
 
 - Documentación
-- Función Espía para proceso de debugueo

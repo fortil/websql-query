@@ -88,9 +88,9 @@ const SQL = function(config: SQLConfig){
       if( records.length <= 0 )
         error('Erro','Inserte objetos ');
       else{
-        let count:number = 0,
-            errors:Array<any> = [],
-            ress:any, txx:any;
+        let count:number = 0;
+        let errors:Array<any> = [];
+        let ress:any, txx:any;
 
         let fn = (cant:number) => {
            this.insert( records[cant], (tx:any, res:any) => {
